@@ -7,7 +7,7 @@
             text-align: center;
             font-family: italic bold; 
             font-size: 100px;
-            padding-top: 15rem;
+            padding-top: 1rem;
             padding-bottom: 1rem;
         }
 
@@ -99,7 +99,7 @@
         
     </style>
 
-    <h1>LogIn Page</h1>
+    <h1>Log In Page</h1>
     
 
     <form action="{{route('login.submit')}}" method="post">
