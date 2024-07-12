@@ -1,3 +1,5 @@
+<!-- resources/views/index.blade.php -->
+
 @extends('layout.app')
 
 @section('content')
@@ -9,7 +11,6 @@
             height: 100vh;
             margin: 0;
             flex-direction: column;
-
         }
         .course-button, .year-list-button {
             display: block;
@@ -67,8 +68,6 @@
             font-size: 60px;
         }
     </style>
-</head>
-<body>
     <div id="courseSelection">
         <button class="course-button" id="bsitButton">BSIT</button>
         <button class="course-button" id="csButton">BSCS</button>
@@ -88,7 +87,7 @@
         <div class="year">3RD YEAR</div>
         <div class="year">4TH YEAR</div>
         
-        <button class="course-button">BSIT-101</button>
+        <button class="course-button" id="bsit-101">BSIT-101</button>
         <button class="course-button">BSIT-201</button>
         <button class="course-button">BSIT-301</button>
         <button class="course-button">BSIT-401</button>
@@ -249,23 +248,22 @@
         <div class="year">3RD YEAR</div>
         <div class="year">4TH YEAR</div>
         
-        <button class="course-button">Tourism-101</button>
-        <button class="course-button">Tourism-201</button>
-        <button class="course-button">Tourism-301</button>
-        <button class="course-button">Tourism-401</button>
+        <button class="course-button">TOURISM-101</button>
+        <button class="course-button">TOURISM-201</button>
+        <button class="course-button">TOURISM-301</button>
+        <button class="course-button">TOURISM-401</button>
 
-        <button class="course-button">Tourism-102</button>
-        <button class="course-button">Tourism-202</button>
-        <button class="course-button">Tourism-302</button>
-        <button class="course-button">Tourism-402</button>
+        <button class="course-button">TOURISM-102</button>
+        <button class="course-button">TOURISM-202</button>
+        <button class="course-button">TOURISM-302</button>
+        <button class="course-button">TOURISM-402</button>
 
-        <button class="course-button">Tourism-103</button>
-        <button class="course-button">Tourism-203</button>
-        <button class="course-button">Tourism-303</button>
-        <button class="course-button">Tourism-403</button>
+        <button class="course-button">TOURISM-103</button>
+        <button class="course-button">TOURISM-203</button>
+        <button class="course-button">TOURISM-303</button>
+        <button class="course-button">TOURISM-403</button>
     </div>
 
-    
     <h2 id="cetTitle" class="course-title"><center>CET YEAR LIST</center></h2>
     <div id="cetYearList" class="container">
         <div class="year">1ST YEAR</div>
@@ -273,74 +271,79 @@
         <div class="year">3RD YEAR</div>
         <div class="year">4TH YEAR</div>
         
-        <button class="course-button">Cet-101</button>
-        <button class="course-button">Cet-201</button>
-        <button class="course-button">Cet-301</button>
-        <button class="course-button">Cet-401</button>
+        <button class="course-button">CET-101</button>
+        <button class="course-button">CET-201</button>
+        <button class="course-button">CET-301</button>
+        <button class="course-button">CET-401</button>
 
-        <button class="course-button">Cet-102</button>
-        <button class="course-button">Cet202</button>
-        <button class="course-button">Cet-302</button>
-        <button class="course-button">Cet402</button>
+        <button class="course-button">CET-102</button>
+        <button class="course-button">CET-202</button>
+        <button class="course-button">CET-302</button>
+        <button class="course-button">CET-402</button>
 
-        <button class="course-button">Cet-103</button>
-        <button class="course-button">Cet-203</button>
-        <button class="course-button">Cet-303</button>
-        <button class="course-button">Cet-403</button>
+        <button class="course-button">CET-103</button>
+        <button class="course-button">CET-203</button>
+        <button class="course-button">CET-303</button>
+        <button class="course-button">CET-403</button>
     </div>
-   
-
+        <button class="course-button" onclick="window.location.href='{{ route('addstudent') }}'">Add Student</button>
     <script>
+       
         document.getElementById('bsitButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('bsitTitle').style.display = 'block';
-            document.getElementById('bsitYearList').style.display = 'grid';
+            toggleYearList('bsitYearList', 'bsitTitle');
         });
-        
+
         document.getElementById('csButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('csTitle').style.display = 'block';
-            document.getElementById('csYearList').style.display = 'grid';
+            toggleYearList('csYearList', 'csTitle');
         });
 
         document.getElementById('actButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('actTitle').style.display = 'block';
-            document.getElementById('actYearList').style.display = 'grid';
+            toggleYearList('actYearList', 'actTitle');
         });
 
         document.getElementById('bscpeButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('bscpeTitle').style.display = 'block';
-            document.getElementById('bscpeYearList').style.display = 'grid';
+            toggleYearList('bscpeYearList', 'bscpeTitle');
         });
+
         document.getElementById('bshmButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('bshmTitle').style.display = 'block';
-            document.getElementById('bshmYearList').style.display = 'grid';
+            toggleYearList('bshmYearList', 'bshmTitle');
         });
+
         document.getElementById('hrsButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('hrsTitle').style.display = 'block';
-            document.getElementById('hrsYearList').style.display = 'grid';
+            toggleYearList('hrsYearList', 'hrsTitle');
         });
+
         document.getElementById('hrtButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('hrtTitle').style.display = 'block';
-            document.getElementById('hrtYearList').style.display = 'grid';
+            toggleYearList('hrtYearList', 'hrtTitle');
         });
 
         document.getElementById('tourismButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('tourismTitle').style.display = 'block';
-            document.getElementById('tourismYearList').style.display = 'grid';
+            toggleYearList('tourismYearList', 'tourismTitle');
         });
 
         document.getElementById('cetButton').addEventListener('click', function() {
-            document.getElementById('courseSelection').style.display = 'none';
-            document.getElementById('cetTitle').style.display = 'block';
-            document.getElementById('cetYearList').style.display = 'grid';
+            toggleYearList('cetYearList', 'cetTitle');
         });
-    </script>
 
+        function toggleYearList(listId, titleId) {
+            const lists = document.querySelectorAll('.container');
+            const titles = document.querySelectorAll('.course-title');
+
+            lists.forEach(list => {
+                if (list.id === listId) {
+                    list.style.display = list.style.display === 'grid' ? 'none' : 'grid';
+                } else {
+                    list.style.display = 'none';
+                }
+            });
+
+            titles.forEach(title => {
+                if (title.id === titleId) {
+                    title.style.display = title.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    title.style.display = 'none';
+                }
+            });
+        }
+    </script>
 @endsection
